@@ -1,8 +1,7 @@
 # Using Google GeoCoding Api
 [![Build status](https://ci.appveyor.com/api/projects/status/gcu4ps8oflyfbf6f?svg=true)](https://ci.appveyor.com/project/phduarte/challenge-dev) 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/db7d172f6a8142df86650781f70eaa67)](https://www.codacy.com/manual/phduarte87/challenge-dev?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=phduarte/challenge-dev&amp;utm_campaign=Badge_Grade)
+[![.NET](https://github.com/phduarte/google-geocode-api/actions/workflows/dotnet.yml/badge.svg)](https://github.com/phduarte/google-geocode-api/actions/workflows/dotnet.yml)
 [![BCH compliance](https://bettercodehub.com/edge/badge/phduarte/challenge-dev?branch=master)](https://bettercodehub.com/)
-[![CodeFactor](https://www.codefactor.io/repository/github/phduarte/challenge-dev/badge)](https://www.codefactor.io/repository/github/phduarte/challenge-dev)
 
 ## Overview
 Api for drivers and cars management.
