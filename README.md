@@ -2,6 +2,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/gcu4ps8oflyfbf6f?svg=true)](https://ci.appveyor.com/project/phduarte/challenge-dev) 
 [![.NET](https://github.com/phduarte/google-geocode-api/actions/workflows/dotnet.yml/badge.svg)](https://github.com/phduarte/google-geocode-api/actions/workflows/dotnet.yml)
 [![BCH compliance](https://bettercodehub.com/edge/badge/phduarte/challenge-dev?branch=master)](https://bettercodehub.com/)
+[![codecov](https://codecov.io/gh/phduarte/google-geocode-api/branch/master/graph/badge.svg?token=iUifZ8zImV)](https://codecov.io/gh/phduarte/google-geocode-api)
 
 ## Overview
 Api for drivers and cars management.
