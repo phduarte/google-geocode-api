@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WappaMobile.ChallengeDev.Data.InMemory\WappaMobile.ChallengeDev.Data.InMemory.csproj" />
+    <ProjectReference Include="..\WappaMobile.ChallengeDev.GoogleMaps\WappaMobile.ChallengeDev.GoogleMaps.csproj" />
+    <ProjectReference Include="..\WappaMobile.ChallengeDev.Models\WappaMobile.ChallengeDev.Models.csproj" />
+    <ProjectReference Include="..\WappaMobile.ChallengeDev\WappaMobile.ChallengeDev.csproj" />
+  </ItemGroup>
+
+</Project>
