@@ -7,7 +7,7 @@ namespace WappaMobile.ChallengeDev.Models
     {
         public string FirstName { get; set; }
         public string LastName { get;set;}
-        public string FullName => $"{FirstName} {LastName}";
+        public string FullName => $"{FirstName} {LastName}".Trim();
 
         public bool IsValid => !FullName.IsEmpty();
 

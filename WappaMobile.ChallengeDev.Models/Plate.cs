@@ -1,17 +1,11 @@
-﻿using System.Runtime.Serialization;
-
-namespace WappaMobile.ChallengeDev.Models
+﻿namespace WappaMobile.ChallengeDev.Models
 {
-    [DataContract]
     public struct Plate
     {
         string _letters;
 
-        [DataMember]
         public string Letters { get { return _letters; } set { _letters = value.ToUpper(); } }
-        [DataMember]
         public string Numbers { get; set; }
-        [DataMember]
         public string NumberPlate => $"{Letters}-{Numbers}";
 
         public Plate(string placa)

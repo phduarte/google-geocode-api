@@ -10,9 +10,9 @@ namespace WappaMobile.ChallengeDev.WebApi.Controllers
     [ApiController]
     public class DriversController : ControllerBase
     {
-        private readonly IDriverServices _driverServices;
+        private readonly DriverServices _driverServices;
 
-        public DriversController(IDriverServices driverServices)
+        public DriversController(DriverServices driverServices)
         {
             _driverServices = driverServices;
         }

@@ -2,7 +2,7 @@
 
 namespace WappaMobile.ChallengeDev.Models
 {
-    public interface IGeoCodeFacade
+    public interface IGeoCodeFacade : IAntiCorruptionLayer
     {
         Task<Coordinate> SearchAsync(Address address);
     }

@@ -90,5 +90,20 @@ namespace WappaMobile.ChallengeDev.Models.Test
 
             Assert.True(driver.IsValid);
         }
+
+        [Fact]
+        public void ShouldDisplayToString()
+        {
+            var driver = new Driver
+            {
+                Name = new Name
+                {
+                    FirstName = "Paulo",
+                    LastName = "Duarte"
+                }
+            };
+
+            Assert.Equal("Paulo Duarte", driver.ToString());
+        }
     }
 }

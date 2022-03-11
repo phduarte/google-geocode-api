@@ -56,5 +56,59 @@ namespace WappaMobile.ChallengeDev.Models
         {
             Assert.Throws<ArgumentException>(() => new Name("Paulo123"));
         }
+
+        [Fact]
+        public void ShouldConvertImplictToString()
+        {
+            Name nomecompleto = "Paulo Henrique Fernandes Duarte";
+            Assert.Equal(nomecompleto, "Paulo Henrique Fernandes Duarte");
+        }
+
+        [Fact]
+        public void ShouldDisplayToString()
+        {
+            Name nomecompleto = "Paulo Henrique Fernandes Duarte";
+            Assert.Equal(nomecompleto.ToString(), "Paulo Henrique Fernandes Duarte");
+        }
+
+        [Fact]
+        public void ShouldRecognizeNameWithoutSurname()
+        {
+            Name nomecompleto = "Paulo";
+            Assert.Equal(nomecompleto, "Paulo");
+        }
+
+        [Fact]
+        public void ShouldRecognizeNameWithSurname()
+        {
+            Name nomecompleto = "Paulo Duarte";
+            Assert.Equal(nomecompleto, "Paulo Duarte");
+        }
+
+        [Fact]
+        public void ShouldRecognizeNameWithMidname()
+        {
+            Name nomecompleto = "Paulo Henrique Duarte";
+            Assert.True(nomecompleto.Equals("Paulo Henrique Duarte"));
+        }
+
+        [Fact]
+        public void ShouldThrowExceptionWhenNameContainsNumber()
+        {
+            Assert.Throws<ArgumentException>(() =>
+            {
+                Name nomecompleto = "Paulo Duart3";
+            });
+        }
+
+        [Fact]
+        public void ShouldInstantiateWithoutArguments()
+        {
+            var name = new Name();
+            name.FirstName = "Paulo";
+            name.LastName = "Duarte";
+
+            Assert.Equal("Paulo Duarte", name);
+        }
     }
 }

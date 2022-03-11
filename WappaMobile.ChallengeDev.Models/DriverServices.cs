@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WappaMobile.ChallengeDev.Models
 {
-    internal class DriverServices : IDriverServices
+    public class DriverServices
     {
         private readonly IGeoCodeFacade _geoCodeFacade;
         private readonly IDriversRepository _driversRepository;
@@ -19,8 +19,8 @@ namespace WappaMobile.ChallengeDev.Models
         public void Save(Driver driver) => _driversRepository.Save(driver);
         public void Add(Driver driver)
         {
-            //var coord = _geoCodeFacade.SearchAsync(driver.Address).GetAwaiter().GetResult();
-            //driver.Address.Coordinate = coord;
+            var coord = _geoCodeFacade.SearchAsync(driver.Address).GetAwaiter().GetResult();
+            driver.Address.Coordinate = coord;
 
             _driversRepository.Add(driver);
         }
