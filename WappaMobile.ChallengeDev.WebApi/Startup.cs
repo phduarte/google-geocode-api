@@ -28,9 +28,9 @@ namespace WappaMobile.ChallengeDev.WebApi
                 o.SwaggerDoc("v1", new OpenApiInfo { Title = "Using GeoCoding API", Version = "v1" });
             });
             services.AddRouting(x => x.LowercaseUrls = true);
-            services.AddDomain();
             services.AddDataInMemory();
             services.AddGoogleMaps(Configuration);
+            services.AddDomain();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

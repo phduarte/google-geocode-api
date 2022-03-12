@@ -1,4 +1,4 @@
-﻿namespace WappaMobile.ChallengeDev.Models
+﻿namespace WappaMobile.ChallengeDev.Models.Cars
 {
     /// <summary>
     /// I could use the name ICarRepository or ICarsRepository, but that doesn't make sense in this case, 

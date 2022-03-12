@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WappaMobile.ChallengeDev.Models;
+using WappaMobile.ChallengeDev.Models.Drivers;
 
 namespace WappaMobile.ChallengeDev.WebApi.Controllers
 {
@@ -10,25 +11,35 @@ namespace WappaMobile.ChallengeDev.WebApi.Controllers
     [ApiController]
     public class DriversController : ControllerBase
     {
-        private readonly DriverServices _driverServices;
+        private readonly GetAllDriversUseCase _getAllDriversUseCase;
+        private readonly CreateDriverUseCase _createDriverUseCase;
+        private readonly UpdateDriverUseCase _updateDriverUseCase;
+        private readonly DeleteDriverUseCase _deleteDriverUseCase;
+        private readonly GetDriverByIdUseCase _getDriverByIdUseCase;
 
-        public DriversController(DriverServices driverServices)
+        public DriversController(GetAllDriversUseCase getAllDriversUseCase,
+            CreateDriverUseCase createDriverUseCase,
+            UpdateDriverUseCase updateDriverUseCase,
+            DeleteDriverUseCase deleteDriverUseCase,
+            GetDriverByIdUseCase getDriverByIdUseCase)
         {
-            _driverServices = driverServices;
+            _getAllDriversUseCase = getAllDriversUseCase;
+            _createDriverUseCase = createDriverUseCase;
+            _updateDriverUseCase = updateDriverUseCase;
+            _deleteDriverUseCase = deleteDriverUseCase;
+            _getDriverByIdUseCase = getDriverByIdUseCase;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Driver>> Get([FromQuery]string orderby = "")
+        public ActionResult<IEnumerable<Driver>> Get([FromQuery] string orderby = "", string name = "")
         {
             try
             {
-                var model = _driverServices.GetDrivers();
-
-                if (orderby.ToLower().Equals("fistname"))
-                    return Ok(model.OrderBy(x => x.Name.FirstName));
-
-                if (orderby.ToLower().Equals("lastname"))
-                    return Ok(model.OrderBy(x => x.Name.LastName));
+                var model = _getAllDriversUseCase.Execute(new DriverSearchCriteria
+                {
+                    Name = name,
+                    OrderBy = orderby,
+                });
 
                 return Ok(model);
             }
@@ -39,11 +50,11 @@ namespace WappaMobile.ChallengeDev.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Driver> Get(Guid id)
+        public ActionResult<DriverSummary> Get(Guid id)
         {
             try
             {
-                var driver = _driverServices.GetById(id);
+                var driver = _getDriverByIdUseCase.Execute(IdentityRequest.From(id));
                 return Ok(driver);
             }
             catch (Exception ex)
@@ -60,9 +71,9 @@ namespace WappaMobile.ChallengeDev.WebApi.Controllers
 
             try
             {
-                _driverServices.Add(driver);
+                _createDriverUseCase.Execute(DriverCreationInfo.From(driver));
 
-                return Created(Url.Action("Get"),driver.Id);
+                return Created(Url.Action("Get"), driver.Id);
             }
             catch (Exception ex)
             {
@@ -77,7 +88,7 @@ namespace WappaMobile.ChallengeDev.WebApi.Controllers
 
             try
             {
-                _driverServices.Save(value);
+                _updateDriverUseCase.Execute(DriverUpdateInfo.From(value));
                 return Ok();
             }
             catch (Exception ex)
@@ -91,7 +102,7 @@ namespace WappaMobile.ChallengeDev.WebApi.Controllers
         {
             try
             {
-                _driverServices.Remove(id);
+                _deleteDriverUseCase.Execute(IdentityRequest.From(id));
                 return Ok();
             }
             catch (Exception ex)

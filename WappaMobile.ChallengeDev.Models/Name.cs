@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace WappaMobile.ChallengeDev.Models
 {
-    public class Name
+    public class Name : ValueObject
     {
         public string FirstName { get; set; }
-        public string LastName { get;set;}
+        public string LastName { get; set; }
         public string FullName => $"{FirstName} {LastName}".Trim();
 
         public bool IsValid => !FullName.IsEmpty();
@@ -71,6 +72,12 @@ namespace WappaMobile.ChallengeDev.Models
         public override string ToString()
         {
             return FullName;
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return FirstName;
+            yield return LastName;
         }
 
         public static implicit operator string(Name name)

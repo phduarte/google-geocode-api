@@ -19,4 +19,8 @@
     <ProjectReference Include="..\WappaMobile.ChallengeDev\WappaMobile.ChallengeDev.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+
 </Project>

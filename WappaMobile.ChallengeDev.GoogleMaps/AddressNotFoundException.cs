@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using WappaMobile.ChallengeDev.Models;
+using WappaMobile.ChallengeDev.Models.Addresses;
 
 namespace WappaMobile.ChallengeDev.GoogleMaps
 {

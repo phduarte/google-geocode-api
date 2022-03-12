@@ -1,6 +1,6 @@
-﻿namespace WappaMobile.ChallengeDev.Models
+﻿namespace WappaMobile.ChallengeDev.Models.Addresses
 {
-    public class Address
+    public class Address : Entity, IAggregateRoot
     {
         public string Suffix { get; set; }
         public string Street { get; set; }

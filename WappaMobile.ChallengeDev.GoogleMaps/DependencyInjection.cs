@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WappaMobile.ChallengeDev.Models;
+using WappaMobile.ChallengeDev.Models.Addresses;
 
 namespace WappaMobile.ChallengeDev.GoogleMaps
 {

@@ -1,11 +1,18 @@
-﻿namespace WappaMobile.ChallengeDev.Models
+﻿using System.Collections.Generic;
+
+namespace WappaMobile.ChallengeDev.Models.Addresses
 {
-    public struct Coordinate
+    public class Coordinate : ValueObject
     {
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
         public bool IsEmpty => Latitude == 0 && Longitude == 0;
+
+        public Coordinate()
+        {
+
+        }
 
         public Coordinate(double lat, double lng)
         {
@@ -18,6 +25,12 @@
         public override string ToString()
         {
             return $"{Latitude}x{Longitude}";
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Latitude;
+            yield return Longitude;
         }
     }
 }

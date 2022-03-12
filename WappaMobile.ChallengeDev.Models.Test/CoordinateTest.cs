@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using WappaMobile.ChallengeDev.Models.Addresses;
+using Xunit;
 
 namespace WappaMobile.ChallengeDev.Models.Test
 {

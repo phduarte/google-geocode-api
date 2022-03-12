@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using WappaMobile.ChallengeDev.Models;
+using WappaMobile.ChallengeDev.Models.Drivers;
 
 namespace WappaMobile.ChallengeDev.Data.InMemory
 {

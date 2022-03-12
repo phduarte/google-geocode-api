@@ -1,6 +1,8 @@
 ﻿using System;
 using Xunit;
 using Moq;
+using WappaMobile.ChallengeDev.Models.Drivers;
+using WappaMobile.ChallengeDev.Models.Addresses;
 
 namespace WappaMobile.ChallengeDev.Models.Test
 {
@@ -15,15 +17,23 @@ namespace WappaMobile.ChallengeDev.Models.Test
                 Id = id
             };
 
-            var googleFacade = new Mock<IGeoCodeFacade>();
+            var expectedDriver = new DriverSummary
+            {
+                Id = id
+            };
+
             var driverRepository = new Mock<IDriversRepository>();
-            var driverService = new DriverServices(googleFacade.Object, driverRepository.Object);
+            var driverService = new GetDriverByIdUseCase(driverRepository.Object);
 
             driverRepository.Setup(x => x.Get(id)).Returns(driver);
+            var emptyRequest = new IdentityRequest
+            {
+                Id = id
+            };
 
-            var savedDriver = driverService.GetById(id);
+            var savedDriver = driverService.Execute(emptyRequest);
 
-            Assert.Equal(driver, savedDriver);
+            Assert.Equal(expectedDriver.Id, savedDriver.Id);
         }
 
         [Fact]
@@ -39,11 +49,16 @@ namespace WappaMobile.ChallengeDev.Models.Test
 
             var googleFacade = new Mock<IGeoCodeFacade>();
             var driverRepository = new Mock<IDriversRepository>();
-            var driverService = new DriverServices(googleFacade.Object, driverRepository.Object);
+            var driverService = new CreateDriverUseCase(googleFacade.Object, driverRepository.Object);
 
             googleFacade.Setup(x => x.SearchAsync(address)).ReturnsAsync(new Coordinate(100, 100));
 
-            driverService.Add(driver);
+            var newDriver = new DriverCreationInfo
+            {
+
+            };
+
+            driverService.Execute(newDriver);
         }
     }
 }

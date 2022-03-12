@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WappaMobile.ChallengeDev.Models;
+using WappaMobile.ChallengeDev.Models.Cars;
+using WappaMobile.ChallengeDev.Models.Drivers;
 
 namespace WappaMobile.ChallengeDev.Data.InMemory
 {

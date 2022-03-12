@@ -1,6 +1,9 @@
 ﻿using System;
 using Xunit;
 using Newtonsoft.Json;
+using WappaMobile.ChallengeDev.Models.Drivers;
+using WappaMobile.ChallengeDev.Models.Cars;
+using WappaMobile.ChallengeDev.Models.Addresses;
 
 namespace WappaMobile.ChallengeDev.Models.Test
 {

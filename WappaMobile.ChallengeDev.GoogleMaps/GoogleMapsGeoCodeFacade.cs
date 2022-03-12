@@ -2,7 +2,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using WappaMobile.ChallengeDev.Models;
+using WappaMobile.ChallengeDev.Models.Addresses;
 
 namespace WappaMobile.ChallengeDev.GoogleMaps
 {
