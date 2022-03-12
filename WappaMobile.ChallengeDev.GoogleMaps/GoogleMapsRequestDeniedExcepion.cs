@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace WappaMobile.ChallengeDev.GoogleMaps
 {
     [Serializable]
-    internal class GoogleMapsRequestDeniedExcepion : Exception
+    public class GoogleMapsRequestDeniedExcepion : WappaMobileException
     {
         public GoogleMapsRequestDeniedExcepion()
         {
