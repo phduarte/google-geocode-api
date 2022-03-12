@@ -14,14 +14,20 @@ namespace WappaMobile.ChallengeDev.Models.Drivers
         public DriverList Execute(DriverSearchCriteria request)
         {
             var response = new DriverList();
-
             var model = _driversRepository.GetAll().Where(x => x.Name.Equals(request.Name));
 
+            if (!string.IsNullOrEmpty(request.Name))
+            {
+                model = model.Where(x => x.Name.ToString().ToLower().Contains(request.Name.ToLower()));
+            }
+
             if (request.OrderBy.ToLower().Equals("fistname"))
-                response.AddRange(model.OrderBy(x => x.Name.FirstName));
+                model = model.OrderBy(x => x.Name.FirstName);
 
             if (request.OrderBy.ToLower().Equals("lastname"))
-                response.AddRange(model.OrderBy(x => x.Name.LastName));
+                model = model.OrderBy(x => x.Name.LastName);
+
+            response.AddRange(model);
 
             return response;
         }

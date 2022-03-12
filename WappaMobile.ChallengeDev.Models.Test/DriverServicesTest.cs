@@ -26,7 +26,7 @@ namespace WappaMobile.ChallengeDev.Models.Test
             var driverService = new GetDriverByIdUseCase(driverRepository.Object);
 
             driverRepository.Setup(x => x.Get(id)).Returns(driver);
-            var emptyRequest = new IdentityRequest
+            var emptyRequest = new IdentityRequestResponse
             {
                 Id = id
             };
@@ -53,12 +53,7 @@ namespace WappaMobile.ChallengeDev.Models.Test
 
             googleFacade.Setup(x => x.SearchAsync(address)).ReturnsAsync(new Coordinate(100, 100));
 
-            var newDriver = new DriverCreationInfo
-            {
-
-            };
-
-            driverService.Execute(newDriver);
+            driverService.Execute(driver);
         }
     }
 }

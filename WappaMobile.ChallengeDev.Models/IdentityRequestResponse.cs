@@ -2,13 +2,13 @@
 
 namespace WappaMobile.ChallengeDev.Models
 {
-    public class IdentityRequest : IPreCondition
+    public class IdentityRequestResponse : IPreCondition, IPostCondition
     {
         public Guid Id { get; set; }
 
-        public static IdentityRequest From(Guid id)
+        public static IdentityRequestResponse From(Guid id)
         {
-            return new IdentityRequest
+            return new IdentityRequestResponse
             {
                 Id = id
             };

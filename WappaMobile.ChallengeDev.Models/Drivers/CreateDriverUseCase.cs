@@ -2,7 +2,7 @@
 
 namespace WappaMobile.ChallengeDev.Models.Drivers
 {
-    public class CreateDriverUseCase : IUseCase<DriverCreationInfo, DriverCreated>
+    public class CreateDriverUseCase : IUseCase<Driver, IdentityRequestResponse>
     {
         private readonly IGeoCodeFacade _geoCodeFacade;
         private readonly IDriversRepository _driversRepository;
@@ -13,16 +13,16 @@ namespace WappaMobile.ChallengeDev.Models.Drivers
             _driversRepository = driversRepository;
         }
 
-        public DriverCreated Execute(DriverCreationInfo request)
+        public IdentityRequestResponse Execute(Driver driver)
         {
-            var driver = request.AsModel();
+            //var driver = request.AsModel();
             var coord = _geoCodeFacade.SearchAsync(driver.Address).GetAwaiter().GetResult();
-            
+
             driver.Address.Coordinate = coord;
 
             _driversRepository.Add(driver);
 
-            return DriverCreated.From(driver);
+            return IdentityRequestResponse.From(driver.Id);
         }
     }
 }

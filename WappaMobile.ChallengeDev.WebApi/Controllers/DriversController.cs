@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using WappaMobile.ChallengeDev.Models;
 using WappaMobile.ChallengeDev.Models.Drivers;
 
 namespace WappaMobile.ChallengeDev.WebApi.Controllers
 {
-    [Route("api/public/v1/[controller]")]
+    [Route("v1/public/[controller]")]
     [ApiController]
     public class DriversController : ControllerBase
     {
@@ -54,7 +53,7 @@ namespace WappaMobile.ChallengeDev.WebApi.Controllers
         {
             try
             {
-                var driver = _getDriverByIdUseCase.Execute(IdentityRequest.From(id));
+                var driver = _getDriverByIdUseCase.Execute(IdentityRequestResponse.From(id));
                 return Ok(driver);
             }
             catch (Exception ex)
@@ -71,9 +70,9 @@ namespace WappaMobile.ChallengeDev.WebApi.Controllers
 
             try
             {
-                _createDriverUseCase.Execute(DriverCreationInfo.From(driver));
+                var id = _createDriverUseCase.Execute(driver);
 
-                return Created(Url.Action("Get"), driver.Id);
+                return Created(Url.Action("Get"), id);
             }
             catch (Exception ex)
             {
@@ -102,7 +101,7 @@ namespace WappaMobile.ChallengeDev.WebApi.Controllers
         {
             try
             {
-                _deleteDriverUseCase.Execute(IdentityRequest.From(id));
+                _deleteDriverUseCase.Execute(IdentityRequestResponse.From(id));
                 return Ok();
             }
             catch (Exception ex)

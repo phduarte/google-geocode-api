@@ -25,7 +25,7 @@ namespace WappaMobile.ChallengeDev.WebApi
             services.AddControllers();
             services.AddSwaggerGen((o) =>
             {
-                o.SwaggerDoc("v1", new OpenApiInfo { Title = "Using GeoCoding API", Version = "v1" });
+                o.SwaggerDoc("v1", new OpenApiInfo { Title = "Google GeoCoding API", Version = "v1" });
             });
             services.AddRouting(x => x.LowercaseUrls = true);
             services.AddDataInMemory();
@@ -49,7 +49,7 @@ namespace WappaMobile.ChallengeDev.WebApi
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "GeoCode Google");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1 - GeoCode Google");
                 c.RoutePrefix = string.Empty;
             });
 

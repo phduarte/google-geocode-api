@@ -1,6 +1,6 @@
 ﻿namespace WappaMobile.ChallengeDev.Models.Drivers
 {
-    public class DeleteDriverUseCase : IUseCase<IdentityRequest, EmptyResponse>
+    public class DeleteDriverUseCase : IUseCase<IdentityRequestResponse, EmptyResponse>
     {
         private IDriversRepository _driversRepository;
 
@@ -9,7 +9,7 @@
             _driversRepository = driversRepository;
         }
 
-        public EmptyResponse Execute(IdentityRequest request)
+        public EmptyResponse Execute(IdentityRequestResponse request)
         {
             _driversRepository.Remove(request.Id);
             return EmptyResponse.Empty;

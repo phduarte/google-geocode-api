@@ -3,7 +3,7 @@ using WappaMobile.ChallengeDev.Models.Cars;
 
 namespace WappaMobile.ChallengeDev.Models.Drivers
 {
-    public class Driver : Entity, IAggregateRoot
+    public class Driver : Entity, IAggregateRoot, IPreCondition, IPostCondition
     {
         public Name Name { get; set; }
         public Car Car { get; set; } = new Car();

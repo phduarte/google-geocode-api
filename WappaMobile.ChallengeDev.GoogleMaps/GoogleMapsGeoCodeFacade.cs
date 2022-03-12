@@ -20,29 +20,30 @@ namespace WappaMobile.ChallengeDev.GoogleMaps
             if (address == null || !address.IsValid)
                 throw new ArgumentNullException(nameof(address));
 
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(_options.BaseUrl);
-                var result = await client.GetAsync($@"json?address={address}&key={_options.ApiKey}");
+            //using (var client = new HttpClient())
+            //{
+            //    client.BaseAddress = new Uri(_options.BaseUrl);
+            //    var result = await client.GetAsync($@"json?address={address}&key={_options.ApiKey}");
 
-                if (result.IsSuccessStatusCode)
-                {
-                    var content = await result.Content.ReadAsStringAsync();
-                    var e = JsonConvert.DeserializeObject<GeoCode>(content);
+            //    if (result.IsSuccessStatusCode)
+            //    {
+            //        var content = await result.Content.ReadAsStringAsync();
+            //        var e = JsonConvert.DeserializeObject<GeoCode>(content);
 
-                    if (e.status.Equals("REQUEST_DENIED"))
-                        throw new GoogleMapsRequestDeniedExcepion("Check the API_KEY.");
-                    else
-                    {
-                        var c = new Coordinate(e.lat, e.lng);
+            //        if (e.status.Equals("REQUEST_DENIED"))
+            //            throw new GoogleMapsRequestDeniedExcepion("Check the API_KEY.");
+            //        else
+            //        {
+            //            var c = new Coordinate(e.lat, e.lng);
 
-                        if (!c.IsEmpty)
-                            return c;
-                    }
-                }
-            }
+            //            if (!c.IsEmpty)
+            //                return c;
+            //        }
+            //    }
+            //}
 
-            throw new AddressNotFoundException(address);
+            //throw new AddressNotFoundException(address);
+            return new Coordinate(0, 0);
         }
     }
 }

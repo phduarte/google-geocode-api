@@ -17,7 +17,7 @@ namespace WappaMobile.ChallengeDev.Models
 
             foreach (var s in useCaseTypes)
             {
-                services.AddSingleton(s);
+                services.AddScoped(s);
             }
 
             return services;

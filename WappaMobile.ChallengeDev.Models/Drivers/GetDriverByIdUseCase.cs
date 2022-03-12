@@ -1,6 +1,6 @@
 ﻿namespace WappaMobile.ChallengeDev.Models.Drivers
 {
-    public class GetDriverByIdUseCase : IUseCase<IdentityRequest, DriverSummary>
+    public class GetDriverByIdUseCase : IUseCase<IdentityRequestResponse, DriverSummary>
     {
         private IDriversRepository _driversRepository;
 
@@ -9,7 +9,7 @@
             _driversRepository = driversRepository;
         }
 
-        public DriverSummary Execute(IdentityRequest request)
+        public DriverSummary Execute(IdentityRequestResponse request)
         {
             var data = _driversRepository.Get(request.Id);
             return DriverSummary.From(data);
